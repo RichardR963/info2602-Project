@@ -1,5 +1,5 @@
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RichardR963/test)
-<a href="https://render.com/deploy?repo=https://github.com/RichardR963/test">
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RichardR963/info2602-Project)
+<a href="https://render.com/deploy?repo=https://github.com/RichardR963/info2602-Project">
   <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
 </a>
 
