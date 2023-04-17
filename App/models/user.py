@@ -25,3 +25,25 @@ class User(db.Model, UserMixin):
         """Check hashed password."""
         return check_password_hash(self.password, password)
 
+    def add_workout(self,workout_id):
+        workout=Workout.query.get(workout_id)
+
+        if workout:
+            try:
+                new_workout=UserWorkout(self.id,workout_id)
+                db.session.add(new_workout)
+                db.session.commit()
+            except Exception:
+                db.session.rollback()
+                return None
+        return None
+    
+    def remove_workout(self,workout_id):
+        workout=UserWorkout.query.get(workout_id)
+
+        if workout.user == self:
+            db.session.delete(workout)
+            db.session.commit()
+            return True
+        return None
+
