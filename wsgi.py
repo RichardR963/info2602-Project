@@ -1,10 +1,11 @@
-import click, pytest, sys
+import click, pytest, sys, csv
 from flask import Flask
 from flask.cli import with_appcontext, AppGroup
 
 from App.database import db, get_migrate
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users )
+from App.models import Workout
 
 # This commands file allow you to create convenient CLI commands for testing controllers
 
@@ -17,6 +18,15 @@ def initialize():
     db.drop_all()
     db.create_all()
     create_user('bob', 'bobpass')
+
+    with open('workouts.csv' newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            workout=Workout(name=row['name'],reps=row['reps'],sets=row['sets'],muscle_group=row['muscle_group'],description=row['description'])
+
+            db.session.add(workout)
+        db.session.commit()
+
     print('database intialized')
 
 '''
