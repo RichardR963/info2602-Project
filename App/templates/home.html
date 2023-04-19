@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block page %}Home Page{% endblock %}
+
+
+{{super()}}
+<!--creates dynamic block with links for each page-->
+{%block links%}
+    <li><a href="/">Home</a></li>
+    <li><a href="/logout">Logout</a></li>
+{%endblock%}
+
+{%block content%}
+<div>
+    <h1>Hello {{user.username}}</h1>
+    <p>Hope this works</p>
+</div>
+
+{%endblock%}
+

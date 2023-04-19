@@ -3,7 +3,12 @@
 {% block page %}App Users{% endblock %}
 
 {{ super() }}
-
+<!--creates dynamic block with links for each page-->
+{%block links%}
+    <li><a href="/">Home</a></li>
+    <li><a href="/users">Users Jinja</a></li>
+    <li><a href="/static/users">Users JS</a></li>
+{%endblock%}
 {% block content %}
     <div class="row">
         <p>

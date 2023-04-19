@@ -34,14 +34,22 @@ def login_action():
     user = login(data['username'], data['password'])
     if user:
         login_user(user)
-        return 'user logged in!'
-    return 'bad username or password given', 401
+        flash("user logged in!")
+        return redirect('/home')
+    else:
+        flash("bad username or password given")
+        return redirect('/login')
 
 @auth_views.route('/logout', methods=['GET'])
 def logout_action():
-    data = request.form
-    user = login(data['username'], data['password'])
-    return 'logged out!'
+    logout_user()
+    return redirect('/login')
+
+@auth_views.route('/home', methods=['GET'])
+@login_required
+def home_action():
+    user = current_user
+    return render_template('home.html', user=user)
 
 '''
 API Routes
