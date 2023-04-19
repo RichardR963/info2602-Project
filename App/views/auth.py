@@ -15,6 +15,16 @@ auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 '''
 Page/Action Routes
 '''
+#login view route
+auth_views.route('/', methods=['GET'])
+auth_views.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+#signup view route
+auth_views.route('/signup', methods=['GET'])
+def signup_page():
+    return render_template('signup.html')
 
 @auth_views.route('/users', methods=['GET'])
 def get_user_page():
