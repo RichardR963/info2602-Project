@@ -3,7 +3,12 @@
 {% block page %}Flask MVC App{% endblock %}
 
 {{ super() }}
-
+<!--creates dynamic block with links for each page-->
+{%block links%}
+    <li><a href="/">Home</a></li>
+    <li><a href="/users">Users Jinja</a></li>
+    <li><a href="/static/users">Users JS</a></li>
+{%endblock%}
 {% block content %}
     <h1>Flask MVC</h1>
     <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
