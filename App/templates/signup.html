@@ -9,13 +9,95 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+     body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        height: 100vh;
+        background-image: url(https://cdn.discordapp.com/attachments/457258713519226902/1098809914220101853/dumbbell-in-luxury-clubhouse.png);
+        background-size: cover;
+        background-position: center;
+     }
+      
+      .col-md-4{
+        
+        color:white;
+        width: 920px;
+        height: 520px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 60px 30px;
+        margin: 1em;
+        opacity: 0.75;
+        transition: 1s;
+  
+      }
+
+      .card{
+        background-color: black;
+        border-radius: 30px;
+        
+      }
+
+      .col-md-4:hover{
+        height: 540px;
+      }
+
+      .btn{
+        transition: 1s;
+      }
+      .btn:hover{
+        color: red;
+
+        
+      }
+
+      .WR{
+        color: white;
+        text-align: center;
+        font-size: 20px;
+
+      }
+
+      .form{
+          padding: 2em;
+      }
+
+      .form-control{
+        transition: 1s;
+      
+      }
+
+      .form-control:hover{
+        transform: scale(1.1);
+      }
+
+      .sample{
+        height: 620px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 30px;
+        text-align: left;
+        color: black;
+        text-align: center;
+        font-style: italic;
+        transition:2s;
+      }
+
+      .sample:hover{
+        
+      }
+
+    </style>
 
     <title>Signup</title>
   </head>
   <body class="bg-nav">
-    <nav class="navbar">
-      <a href="" class="navbar-brand text-light">Workout Remixer App</a>
-    </nav>
+    
     <div>
       <div>
         <div class="messages">
@@ -35,14 +117,17 @@
         </div>
         {% block content %}{% endblock %}
       </div>
+      <h1 class="sample">CREATE AND REMIX YOUR WORKOUT ROUTINES AT YOUR FINGERTIPS</h1>
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h1 class="text-light display-4 mt-100" style="font-size: 80px;">Create and remix your workout routines at your fingertips. </h1>
+         
         </div>
+      
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
+              <p class="WR">Workout Remixer</p>
               <form class="form" method="post" action="">
                 <label>Username</label><br>
                 <input type="text" class="form-control" name="username"><br>
@@ -54,6 +139,8 @@
             </div>
           </div>
         </div>
+
+      
 
       </div>
     </div>
