@@ -9,7 +9,8 @@ from App.controllers import (
     get_workouts,
     get_workout,
     add_workout_to_user,
-    remove_workout_from_user
+    remove_workout_from_user,
+    get_user_workouts
 )
 
 workout_views=Blueprint('workout_views',__name__,template_folder='../templates')
@@ -21,22 +22,24 @@ def get_workouts_action(workout_id=1):
     user=current_user
 
     selected_workout=get_workout(workout_id)
-    workout=get_workouts()
+    workouts=get_workouts()
+    userWorkouts = get_user_workouts(user.id)
+    return render_template('home.html', user=user, selected_workout=selected_workout, workouts=workouts, userWorkouts=userWorkouts)
 
-    return render_template('index.html',selected_workout=selected_workout,workout=workout)
-
-@workout_views.route('/workouts/<int:workout_id>', methods=['POST'])
+@workout_views.route('/add-workouts/<int:workout_id>', methods=['POST'])
 @login_required
 def add_workout_action(workout_id):
     user=current_user
-
+    if user:
+        flash('Doing something')
+        
     add_workout_to_user(user.id,workout_id)
 
     flash('Workout added!')
 
     return redirect('/workouts')
 
-@workout_views.route('/workouts/<int:user_workout_id>', methods=['POST'])
+@workout_views.route('/remove-workouts/<int:user_workout_id>', methods=['POST'])
 @login_required
 def remove_workout_action(user_workout_id):
     user=current_user
