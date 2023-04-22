@@ -1,4 +1,4 @@
-from App.models import User,Workout,UserWorkout
+from App.models import User, Workout, UserWorkout
 from App.database import db
 
 def get_workouts():
@@ -22,3 +22,8 @@ def remove_workout_from_user(user_id,user_workout_id):
     user=User.query.filter_by(id=user_id).first()
 
     user.remove_workout(workout.id) 
+
+def get_user_workouts(user_id):
+    userWorkouts = UserWorkout.query.filter_by(user_id=user_id).all()
+    
+    return userWorkouts

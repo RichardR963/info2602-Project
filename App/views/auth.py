@@ -7,9 +7,12 @@ from.index import index_views
 from App.controllers import (
     create_user,
     jwt_authenticate,
-    login 
+    login,
+    get_user_workouts
 )
+from App.controllers import *
 
+from App.models import db, User, UserWorkout, Workout
 auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 '''
@@ -47,9 +50,13 @@ def logout_action():
 
 @auth_views.route('/home', methods=['GET'])
 @login_required
-def home_action():
+def home_action(workout_id=1):
     user = current_user
-    return render_template('home.html', user=user)
+    selected_workout=get_workout(workout_id)
+    workouts=get_workouts()
+    userWorkouts = get_user_workouts(user.id)
+    return render_template('home.html',user=user, selected_workout=selected_workout, workouts=workouts, userWorkouts=userWorkouts)
+
 
 '''
 API Routes

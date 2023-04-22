@@ -11,10 +11,63 @@
 {%endblock%}
 
 {%block content%}
-<div>
-    <h1>Hello {{user.username}}</h1>
-    <p>Hope this works</p>
-</div>
+    <div class="row">
+        <div class="col m2 list-container collection" id ="workout-list">
+            {% for workout in workouts %}
+                <div class="list-item">
+                    <a href="/workouts/{{workout.id}}" id="workout-{{workout.id}}" class="collection-item active" style="background-color:slategray;">{{workout.name}}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col m3">
+            <p class="text-center">Selected Workout</p>
+        
+        
+            <div class="card">
+                <!-- Selected Workout Content Here -->
+        
+                <div class="card-content">
+                    <span class="card-title"><h5>{{selected_workout.name}}</h5></span>
+                    
+                    <p>Reps: {{selected_workout.reps}}</p>
+                    <p>Sets: {{selected_workout.sets}}</p>
+                    <p>Muscle Group: {{selected_workout.muscle_group}}</p>
+                    <p>Description: {{selected_workout.description}}</p>
+                    
+                    <form id="captureForm" class="card-content" method="POST" action="/add-workouts/{{selected_workout.id}}"></form>
+                        <button data-workout-id="{{selected_workout.id}}" class="btn green" href="/add-workouts/{{selected_workout.id}}" >Add Workout</button>
+                    </form>
+                </div>
+            
+            </div>
+        </div>
+        <div class="col m7">
+            <p class="text-center">Your Workout Routine</p>
+            <table title="Your Pokemon">
+                
+                <thead>
+                    <th>Workout</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+
+                
+                <!-- Acquired workout content here -->
+                {% for acquired in userWorkouts %}
+                    <tr>
+                        <td>{{acquired.workout.name}}</td>
+                        <td>
+                            <form method="GET" action="/remove-workouts/{{acquired.id}}">
+                                <button class="btn green" href="/remove-workouts/{{acquired.id}}">Complete</button>
+                            </form>
+                        </td> 
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 {%endblock%}
 

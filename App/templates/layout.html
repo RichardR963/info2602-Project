@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    <nav class="purple">
+    <nav class="light blue">
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo center">{% block page %}{% endblock %}</a>
         <div class="nav-wrapper">
@@ -29,19 +29,19 @@
       </div>
     </nav>
     
-    {% with messages = get_flashed_messages() %}
+    <div class="messages">
+      {% with messages = get_flashed_messages() %}
       {% if messages %}
-      <nav class="white black-text" style="padding: 10px">
-        <div class="nav-wrapper">
-            <ul class="flashes">
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        </div>
-      </nav>
+      <div id="alert" class="col s10 offset-s1">
+        <a href="" id="close">&times;</a>
+        {% for message in messages %}
+        <div style="font-weight: bold;text-align: center;font-size: 1.2em;margin-top: -5px;">{{ message }}</div>
+        {% endfor %}
+      </div>
+
       {% endif %}
-    {% endwith %}
+      {% endwith %}
+    </div>
 
     <div class="container" id="content">{% block content %}{% endblock %}</div>
 
