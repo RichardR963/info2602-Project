@@ -16,7 +16,7 @@ from App.controllers import (
 )
 
 from App.views import views
-from App.database import db
+
 def add_views(app):
     for view in views:
         app.register_blueprint(view)
@@ -44,6 +44,5 @@ def create_app(config_overrides={}):
     setup_jwt(app)
     setup_flask_login(app)
     app.app_context().push()
-    with app.app_context():
-        db.create_all()
+    
     return app
