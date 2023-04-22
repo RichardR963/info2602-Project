@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
-{% block title %}Home{% endblock %}
-{% block page %}Home Page{% endblock %}
+{% block title %}WorkMeOut{% endblock %}
+{% block page %}WorkMeOut{% endblock %}
 
 
 {{super()}}
@@ -19,7 +19,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col m3" style="float:right;">
+        <div class="col m3" style="float:left;">
             <p class="text-center">Selected Workout</p>
         
         
@@ -41,13 +41,15 @@
             
             </div>
         </div>
-        <div class="col m3" style="float:left">
+        <div class="col m3" style="float:right">
             <p class="text-center">Your Workout Routine</p>
-            <table title="Your Pokemon">
+            <table>
                 
                 <thead>
                     <th>Workout</th>
-                    <th>Name</th>
+                    <th>Reps</th>
+                    <th>Sets</th>
+                    <th>Muscle Group</th>
                     <th>Actions</th>
                 </thead>
                 <tbody>
@@ -57,6 +59,9 @@
                 {% for acquired in userWorkouts %}
                     <tr>
                         <td>{{acquired.workout.name}}</td>
+                        <td>{{acquired.workout.reps}}</td>
+                        <td>{{acquired.workout.sets}}</td>
+                        <td>{{acquired.workout.muscle_group}}</td>
                         <td>
                             <form method="GET" action="/remove-workouts/{{acquired.id}}">
                                 <button class="btn green" href="/remove-workouts/{{acquired.id}}">Complete</button>
