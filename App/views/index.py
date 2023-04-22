@@ -45,7 +45,8 @@ def init():
 
             db.session.add(workout)
         db.session.commit()
-
+        
+    flash('database initialized')
     print('database intialized')
 
 
