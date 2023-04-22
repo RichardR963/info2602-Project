@@ -38,7 +38,7 @@ def init():
     db.create_all()
     create_user('bob', 'bobpass')
 
-    with open('../../workouts.csv', newline='', encoding='utf-8') as csvfile:
+    with open('workouts.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             workout=Workout(name=row['name'],reps=row['reps'],sets=row['sets'],muscle_group=row['muscle_group'],description=row['description'])
