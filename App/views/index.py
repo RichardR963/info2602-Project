@@ -47,7 +47,7 @@ def init():
         db.session.commit()
         
     flash('database initialized')
-    print('database intialized')
+    return redirect('/')
 
 
 @index_views.route('/health', methods=['GET'])
