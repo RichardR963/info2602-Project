@@ -30,8 +30,6 @@ def get_workouts_action(workout_id=1):
 @login_required
 def add_workout_action(workout_id):
     user=current_user
-    if user:
-        flash('Doing something')
         
     add_workout_to_user(user.id,workout_id)
 
@@ -39,12 +37,12 @@ def add_workout_action(workout_id):
 
     return redirect('/workouts')
 
-@workout_views.route('/remove-workouts/<int:user_workout_id>', methods=['POST'])
+@workout_views.route('/remove-workouts/<int:user_workout_id>', methods=['GET'])
 @login_required
 def remove_workout_action(user_workout_id):
     user=current_user
 
-    remove_workout_from_user(user.id,workout_id)
+    remove_workout_from_user(user.id,user_workout_id)
 
     flash('Workout removed!')
 

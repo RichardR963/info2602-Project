@@ -19,7 +19,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col m3">
+        <div class="col m3" style="float:right;">
             <p class="text-center">Selected Workout</p>
         
         
@@ -34,14 +34,14 @@
                     <p>Muscle Group: {{selected_workout.muscle_group}}</p>
                     <p>Description: {{selected_workout.description}}</p>
                     
-                    <form id="captureForm" class="card-content" method="POST" action="/add-workouts/{{selected_workout.id}}"></form>
+                    <form id="captureForm" class="card-content" method="POST" action="/add-workouts/{{selected_workout.id}}">
                         <button data-workout-id="{{selected_workout.id}}" class="btn green" href="/add-workouts/{{selected_workout.id}}" >Add Workout</button>
                     </form>
                 </div>
             
             </div>
         </div>
-        <div class="col m7">
+        <div class="col m3" style="float:left">
             <p class="text-center">Your Workout Routine</p>
             <table title="Your Pokemon">
                 
