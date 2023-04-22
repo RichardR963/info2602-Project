@@ -23,6 +23,7 @@
       
       .col-md-4{
         
+        display: flex;
         color:white;
         width: 920px;
         height: 520px;
@@ -35,12 +36,14 @@
         margin: 1em;
         opacity: 0.75;
         transition: 1s;
+        
   
       }
 
       .card{
         background-color: black;
         border-radius: 30px;
+        display: flex;
         
       }
 
@@ -86,11 +89,9 @@
         text-align: center;
         font-style: italic;
         transition:2s;
+        display: flex;
       }
 
-      .sample:hover{
-        
-      }
 
     </style>
 
@@ -127,8 +128,8 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <p class="WR">Workout Remixer</p>
-              <form class="form" method="post" action="">
+              <p class="WR">Workout Remixer Signup</p>
+              <form class="form" method="post" action="/signup">
                 <label>Username</label><br>
                 <input type="text" class="form-control" name="username"><br>
                 <label>Password</label><br>
