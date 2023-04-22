@@ -36,7 +36,17 @@ def init():
     db.drop_all()
     db.create_all()
     create_user('bob', 'bobpass')
-    return jsonify(message='db initialized!')
+
+    with open('workouts.csv', newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            workout=Workout(name=row['name'],reps=row['reps'],sets=row['sets'],muscle_group=row['muscle_group'],description=row['description'])
+
+            db.session.add(workout)
+        db.session.commit()
+
+    print('database intialized')
+
 
 @index_views.route('/health', methods=['GET'])
 def health_check():
